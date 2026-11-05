@@ -1,4 +1,4 @@
-﻿name: Deploy to Cloudflare Workers
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -55,10 +55,11 @@ jobs:
           fi
           cat > wrangler.jsonc <<EOF
           {
-            "\$schema": "node_modules/wrangler/config-schema.json",
+            "$schema": "node_modules/wrangler/config-schema.json",
             "name": "$WORKER_NAME",
             "main": "$WORKER_MAIN",
             "compatibility_date": "$COMPATIBILITY_DATE",
+            "compatibility_flags": ["nodejs_compat"],
             "observability": { "enabled": $OBSERVABILITY_ENABLED },
             "d1_databases": [
               {
